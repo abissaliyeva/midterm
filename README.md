@@ -18,7 +18,7 @@ The Factory Method pattern is used to encapsulate the creation of different coff
 The Decorator Pattern is used to dynamically add extra ingredients or toppings to a base coffee without modifying the existing coffee classes.
 
 - **`CoffeeDecorator` Abstract Class:** Implements `Coffee` and wraps an existing coffee object.
-- **Concrete Decorator Classes:** `MilkDecorator`, `CaramelDecorator`, `WhippedCreamDecorator`, `ChocolateDecorator` modify `getCost()` and `getDescription()`.
+- **Concrete Decorator Classes:** `MilkDecorator`, `CaramelDecorator`, `ChocolateDecorator` modify `getCost()` and `getDescription()`.
 
 ---
 
@@ -29,25 +29,45 @@ The Decorator Pattern is used to dynamically add extra ingredients or toppings t
 - The order summary displays the final customized coffee with a detailed description.
 
 ---
-
-## Installation & Running the Program
-### Prerequisites
-- Java Development Kit (JDK) installed (Java 8 or later).
-- A Java-compatible IDE (e.g., IntelliJ IDEA, Eclipse, VS Code) or a terminal.
-
-### Steps to Run
-1. **Compile the Java files:**
-   ```sh
-   javac CoffeeOrderDemo.java
-   ```
-2. **Run the program:**
-   ```sh
-   java CoffeeOrderDemo
-   ```
-3. **Follow the console instructions** to select a coffee and add toppings.
-
----
-
+   
 ## Conclusion
 This project demonstrates the **Factory Method Pattern** for coffee creation and the **Decorator Pattern** for dynamically adding toppings. It provides a flexible and scalable design while ensuring easy maintenance and future enhancements.
 
+
+
+# Payment Platform
+
+## Overview
+This is a console-based Payment Platform that supports multiple payment methods, including Credit Card, PayPal, and Cryptocurrency. The system uses the **Factory Method Pattern** for creating different payment objects and the **Adapter Pattern** to integrate an external or mock API for processing payments.
+
+---
+
+## Design Patterns Used
+
+### 1. Factory Method Pattern
+The Factory Method pattern is used to encapsulate the creation of different payment method objects. Instead of directly instantiating payment objects, we delegate object creation to a factory.
+
+- **`PaymentMethod` Interface:** Defines `processPayment(double amount)`.
+- **Concrete Payment Classes:** `CreditCardPayment`, `PayPalPayment`, `CryptoPayment` implement `PaymentMethod`.
+- **Factory Class:** `PaymentFactory` contains `createPayment(String type)` to instantiate the correct payment method.
+
+### 2. Adapter Pattern
+The Adapter Pattern is used to integrate external or legacy APIs while ensuring compatibility with the `PaymentMethod` interface.
+
+- **`ExternalPaymentAdapter` Interface:** Ensures that different adapters conform to a common structure.
+- **`PayPalPaymentAdapter` Class:** Adapts an external/mock PayPal API.
+
+---
+
+## Features
+- Users can choose a payment method: Credit Card, PayPal, or Cryptocurrency.
+- The system processes payments and returns success or failure messages.
+- Uses external adapters for integrating mock payment validation services.
+- Includes basic error handling for invalid inputs and insufficient funds.
+- Supports transaction logging and history tracking.
+
+---
+
+Conclusion
+
+This project demonstrates the Factory Method Pattern for payment creation and the Adapter Pattern for external API integration. It provides a scalable design that supports multiple payment methods and allows for easy future enhancements.
